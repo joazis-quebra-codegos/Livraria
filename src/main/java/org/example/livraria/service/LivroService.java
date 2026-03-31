@@ -5,6 +5,7 @@ import org.example.livraria.repository.LivroRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LivroService {
@@ -19,7 +20,20 @@ public class LivroService {
         return repository.save(livro);
     }
 
+    public Livro buscar(Long id){
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Livro não encontrado"));
+    }
+
     public List<Livro> listar(){
         return repository.findAll();
+    }
+
+    public void deletar(Long id){
+        repository.deleteById(id);
+    }
+
+    public List<Livro> buscarPorNome(String nome){
+        return repository.findByNomeContainingIgnoreCase(nome);
     }
 }
