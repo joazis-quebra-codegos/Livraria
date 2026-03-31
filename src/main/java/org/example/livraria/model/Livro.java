@@ -35,4 +35,6 @@ public class Livro {
     @Column(unique = true)
     private String ISBN;
 
+    public Livro(){}
+
 }

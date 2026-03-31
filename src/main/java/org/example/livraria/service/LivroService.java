@@ -33,7 +33,7 @@ public class LivroService {
         repository.deleteById(id);
     }
 
-    public List<Livro> buscarPorNome(String nome){
-        return repository.findByNomeContainingIgnoreCase(nome);
+    public List<Livro> buscarPorNome(String titulo){
+        return repository.findByTituloContainingIgnoreCase(titulo);
     }
 }
