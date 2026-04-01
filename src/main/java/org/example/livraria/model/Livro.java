@@ -33,7 +33,7 @@ public class Livro {
 
     @NotBlank(message = "ISBN é obrigatório")
     @Column(unique = true)
-    private String ISBN;
+    private String isbn;
 
     public Livro(){}
 

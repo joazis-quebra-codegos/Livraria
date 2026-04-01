@@ -28,18 +28,23 @@ public class LivroController {
         return service.listar();
     }
 
-    @PostMapping("/{id}")
+    @PostMapping
     public Livro criar(@RequestBody @Valid Livro livro){
         return service.salvar(livro);
     }
 
     @PutMapping("/{id}")
-    public Livro atualizar(@PathVariable Long id, @RequestBody Livro livro){
+    public Livro atualizar(@PathVariable Long id, @RequestBody @Valid Livro livro){
         return service.atualizar(id, livro);
     }
 
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable Long id){
         service.deletar(id);
+    }
+
+    @GetMapping("/buscar")
+    public List<Livro> buscarPorTitulo(@RequestParam String titulo){
+        return service.buscarPorTitulo(titulo);
     }
 }
