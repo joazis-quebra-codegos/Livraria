@@ -18,7 +18,7 @@ public class LivroController {
         this.service = service;
     }
 
-    @GetMapping("{/id}")
+    @GetMapping("/{id}")
     public Livro buscar(@PathVariable Long id){
         return service.buscar(id);
     }
@@ -28,18 +28,17 @@ public class LivroController {
         return service.listar();
     }
 
-    @PostMapping("{/id}")
+    @PostMapping("/{id}")
     public Livro criar(@RequestBody @Valid Livro livro){
         return service.salvar(livro);
     }
 
-    @PutMapping("{/id}")
+    @PutMapping("/{id}")
     public Livro atualizar(@PathVariable Long id, @RequestBody Livro livro){
-        livro.setId(id);
-        return service.salvar(livro);
+        return service.atualizar(id, livro);
     }
 
-    @DeleteMapping("{/id}")
+    @DeleteMapping("/{id}")
     public void deletar(@PathVariable Long id){
         service.deletar(id);
     }

@@ -29,11 +29,17 @@ public class LivroService {
         return repository.findAll();
     }
 
+    public Livro atualizar(Long id, Livro livro){
+        buscar(id);
+        livro.setId(id);
+        return repository.save(livro);
+    }
+
     public void deletar(Long id){
         repository.deleteById(id);
     }
 
-    public List<Livro> buscarPorNome(String titulo){
+    public List<Livro> buscarPorTitulo(String titulo){
         return repository.findByTituloContainingIgnoreCase(titulo);
     }
 }
